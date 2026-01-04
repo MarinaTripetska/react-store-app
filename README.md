@@ -20,5 +20,5 @@ Simple store application built with **React** and **TypeScript** as a recruitmen
 ## Getting Started
 
 ```bash
-npm install
+npm ci
 npm run dev
