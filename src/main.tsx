@@ -9,7 +9,6 @@ const HomePage = lazy(() => import('@/pages/HomePage'));
 const ProductsPage = lazy(() => import('@/pages/ProductsPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
-
 const router = createBrowserRouter([
   {
     path: "/",
