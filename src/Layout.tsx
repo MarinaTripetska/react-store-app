@@ -5,8 +5,11 @@ import Cart from "@/components/Cart.tsx";
 function Layout() {
   return (
     <>
-      <Navbar/>
-      <Cart/>
+      <header className="wrapper flex justify-between">
+        <Navbar/>
+        <Cart/>
+      </header>
+
       <Outlet/>
     </>
   )

@@ -1,5 +1,11 @@
 function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <main className="wrapper">
+      <h1>
+        Home <span className="text-gradient">Page</span>
+      </h1>
+    </main>
+  )
 }
 
 export default HomePage;

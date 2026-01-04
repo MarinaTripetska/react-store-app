@@ -1,5 +1,9 @@
 function ProductsPage() {
-  return <div>ProductPage</div>;
+  return (
+    <main className="wrapper">
+      <h1>Product Page</h1>
+    </main>
+  )
 }
 
 export default ProductsPage;
