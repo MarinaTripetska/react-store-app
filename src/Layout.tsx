@@ -7,7 +7,7 @@ function Layout() {
     <>
       <header className="wrapper flex justify-between">
         <Navbar/>
-        <Cart/>
+        <Cart value={0}/>
       </header>
 
       <Outlet/>
