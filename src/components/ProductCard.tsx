@@ -6,10 +6,10 @@ interface ProductProps {
 
 function ProductCard({
                    product:
-                     {id, title, image, price, category, rating  }
+                     {title, image, price, category, rating  }
                  }: ProductProps) {
   return (
-    <li key={id} className="product-card">
+    <li className="product-card">
       <img
         src={image ? image : '/no-product.png'}
         alt={title}
