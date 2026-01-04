@@ -1,24 +1,33 @@
-import {StrictMode} from 'react'
+import {StrictMode, lazy} from 'react'
 import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import '@/index.css'
-import HomePage from "@/pages/HomePage.tsx";
-import ProductsPage from "@/pages/ProductsPage.tsx";
-import NotFoundPage from "@/pages/NotFoundPage.tsx";
+import Layout from '@/Layout';
+
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const ProductsPage = lazy(() => import('@/pages/ProductsPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage/>,
-  },
-  {
-    path: "/products",
-    element: <ProductsPage/>,
-  },
-  {
-    path: "*",
-    element: <NotFoundPage/>
+    Component: Layout,
+    children: [
+      {
+        path: "/",
+        Component: HomePage,
+      },
+      {
+        path: "/products",
+        Component: ProductsPage,
+      },
+      {
+        path: "*",
+        Component: NotFoundPage
+      }
+    ]
   }
 ])
 
