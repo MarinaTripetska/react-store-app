@@ -1,9 +1,11 @@
 function HomePage() {
   return (
     <main className="wrapper">
-      <h1>
-        Home <span className="text-gradient">Page</span>
-      </h1>
+      <section className="section">
+        <h1>
+          Home <span className="text-gradient">Page</span>
+        </h1>
+      </section>
     </main>
   )
 }
