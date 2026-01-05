@@ -7,6 +7,7 @@
 	--color-light-200: #a8b5db;
 	--color-gray-100: #9ca4ab;
 	--color-dark-100: #16112f;
+	--color-dark-200: #211f4e;
 
 	--breakpoint-xs: 480px;
 
@@ -52,10 +53,10 @@
 	}
 
 	.product-card {
-		@apply w-full bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10 text-white;
+		@apply w-full flex flex-col gap-3 bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10 text-white transition duration-150 ease-in-out hover:-translate-y-0.5 hover:shadow-lg;
 
 		& img {
-			@apply rounded-lg w-full h-[200px] object-contain;
+			@apply rounded-lg w-full h-50 object-contain;
 		}
 
 		& h3 {
