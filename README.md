@@ -17,6 +17,9 @@ Simple store application built with **React** and **TypeScript** as a recruitmen
 - React Router
 - Fake Store API
 
+## Production URL
+Deployed on Netlify - [LINK](https://simple-react-store-app.netlify.app/)
+
 ## Getting Started
 
 ```bash
