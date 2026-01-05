@@ -2,11 +2,10 @@ import {useEffect, useState} from "react";
 import type {ProductInterface} from "@/types/ProductInterface.ts";
 import Spinner from "@/components/Spinner.tsx";
 import ProductCard from "@/components/ProductCard.tsx";
+import {fetchProducts} from "@/api/products.ts";
 
 type ErrorMessage = string | null
 type SortOption = "default" | "title" | "price";
-
-const BASE_API_URL = "https://fakestoreapi.com"
 
 function ProductsPage() {
   const [sortOption, setSortOption] = useState<SortOption>("default");
@@ -26,30 +25,23 @@ function ProductsPage() {
     return 0;
   });
 
-  const fetchProducts = async () => {
+  const loadProducts  = async () => {
     setLoading(true);
     setErrorMessage(null);
 
     try {
-      const response = await fetch(`${BASE_API_URL}/products`);
-
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-
-      const products: ProductInterface[] = await response.json();
-      setProducts(products);
-
+      const data = await fetchProducts();
+      setProducts(data);
     } catch (error) {
-      console.error(`Error fetching movies: ${error}`);
-      setErrorMessage("Error fetching movies. Please try again later.");
+      console.error(error);
+      setErrorMessage("Nie udało się pobrać produktów.");
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    fetchProducts();
+    loadProducts();
   }, [])
 
   return (
