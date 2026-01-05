@@ -1,13 +1,30 @@
 import type {ProductInterface} from "@/types/ProductInterface.ts";
+import {useCart} from "@/context/CartContext.tsx";
+import DeleteIcon from "@/assets/icons/DeleteIcon.tsx";
+import AddToCartIcon from "@/assets/icons/AddToCartIcon.tsx";
 
 interface ProductProps {
   product: ProductInterface
 }
 
 function ProductCard({
-                   product:
-                     {title, image, price, category, rating  }
-                 }: ProductProps) {
+                       product:
+                         {id, title, image, price, category, rating}
+                     }: ProductProps) {
+  const {
+    cartItems,
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+  } = useCart();
+
+  const cartItem = cartItems.find(
+    (item) => item.productId === id
+  );
+
+  const quantity = cartItem?.quantity ?? 0;
+
   return (
     <li className="product-card">
       <img
@@ -19,6 +36,20 @@ function ProductCard({
       <p>{price}$</p>
       <p>{category}</p>
       <p>{rating.rate} {rating.count}</p>
+
+      {quantity === 0 ? (
+        <button type="button" title="Add to Cart" onClick={() => addToCart(id)}>
+          <AddToCartIcon/>
+        </button>
+      ) : (
+        <div>
+          <button type="button" onClick={() => decreaseQuantity(id)}>-</button>
+          <span>{quantity}</span>
+          <button type="button" onClick={() => increaseQuantity(id)}>+</button>
+
+          <button type="button" title="Remove" onClick={() => removeFromCart(id)}><DeleteIcon/></button>
+        </div>
+      )}
     </li>
   )
 }

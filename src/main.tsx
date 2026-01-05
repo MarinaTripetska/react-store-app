@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import '@/index.css'
 import Layout from '@/Layout';
+import {CartProvider} from "@/context/CartContext.tsx";
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ProductsPage = lazy(() => import('@/pages/ProductsPage'));
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <CartProvider>
+      <RouterProvider router={router}/>
+    </CartProvider>
   </StrictMode>,
 )
