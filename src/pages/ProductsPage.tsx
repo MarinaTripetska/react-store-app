@@ -25,22 +25,23 @@ function ProductsPage() {
     return 0;
   });
 
-  const loadProducts  = async () => {
-    setLoading(true);
-    setErrorMessage(null);
-
-    try {
-      const data = await fetchProducts();
-      setProducts(data);
-    } catch (error) {
-      console.error(error);
-      setErrorMessage("Nie udało się pobrać produktów.");
-    } finally {
-      setLoading(false);
-    }
-  }
 
   useEffect(() => {
+    const loadProducts = async () => {
+      setLoading(true);
+      setErrorMessage(null);
+
+      try {
+        const data = await fetchProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+        setErrorMessage("Failed fetch products. Try again later.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
     loadProducts();
   }, [])
 
@@ -69,13 +70,16 @@ function ProductsPage() {
         <div>
           {
             loading ? (
-             <Spinner/>
+              <Spinner/>
             ) : errorMessage ? (
               <p className="py-10 text-red-800 text-center text-xl font-semibold">{errorMessage}</p>
             ) : (
               <ul className="py-6 lg:py-10 all-products">
                 {sortedProducts.map((product: ProductInterface) => (
-                  <ProductCard key={product.id} product={product}/>
+                  <li key={product.id}>
+                    <ProductCard  product={product}/>
+                  </li>
+
                 ))}
               </ul>
             )

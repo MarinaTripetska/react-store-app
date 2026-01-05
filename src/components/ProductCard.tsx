@@ -5,11 +5,13 @@ import AddToCartIcon from "@/assets/icons/AddToCartIcon.tsx";
 
 interface ProductProps {
   product: ProductInterface
+  className?: string
 }
 
 function ProductCard({
                        product:
-                         {id, title, image, price, category, rating}
+                         {id, title, image, price, category, rating},
+                       className
                      }: ProductProps) {
   const {
     cartItems,
@@ -26,7 +28,7 @@ function ProductCard({
   const quantity = cartItem?.quantity ?? 0;
 
   return (
-    <li className="product-card">
+    <div className={"product-card " + className }>
       <img
         src={image ? image : '/no-product.png'}
         alt={title}
@@ -50,7 +52,7 @@ function ProductCard({
           <button type="button" title="Remove" onClick={() => removeFromCart(id)}><DeleteIcon/></button>
         </div>
       )}
-    </li>
+    </div>
   )
 }
 
