@@ -1,17 +1,14 @@
 import {
-  createContext,
-  useContext,
   useEffect,
   useState,
   type ReactNode,
 } from "react";
-import type {CartContextType, CartItem} from "@/types/CartTypes";
-
-const CartContext = createContext<CartContextType | null>(null);
+import { CartContext } from "./cartContext";
+import type {CartItem} from "@/types/CartTypes";
 
 const CART_STORAGE_KEY = "cart";
 
-export function CartProvider({children}: { children: ReactNode }) {
+function CartProvider({children}: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
       const storedCart = localStorage.getItem(CART_STORAGE_KEY);
@@ -84,12 +81,4 @@ export function CartProvider({children}: { children: ReactNode }) {
   );
 }
 
-export function useCart() {
-  const context = useContext(CartContext);
-
-  if (!context) {
-    throw new Error("useCart must be used within CartProvider");
-  }
-
-  return context;
-}
+export default CartProvider;

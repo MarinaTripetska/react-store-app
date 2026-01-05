@@ -50,8 +50,6 @@ function ProductsPage() {
       <section className="section">
         <h1>We <span className="text-gradient">offer you</span> best quality</h1>
 
-        <h2>Popular:</h2>
-
         <div className="py-4 text-white">
           <label>
             Sort:&nbsp;

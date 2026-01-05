@@ -1,5 +1,5 @@
 import type {ProductInterface} from "@/types/ProductInterface.ts";
-import {useCart} from "@/context/CartContext.tsx";
+import {useCart} from "@/context/useCart";
 import DeleteIcon from "@/assets/icons/DeleteIcon.tsx";
 import AddToCartIcon from "@/assets/icons/AddToCartIcon.tsx";
 

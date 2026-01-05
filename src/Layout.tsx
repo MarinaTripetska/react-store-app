@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 import Navbar from "@/components/Navbar.tsx";
 import Cart from "@/components/Cart.tsx";
-import { useCart } from "@/context/CartContext";
+import { useCart } from "@/context/useCart";
 
 function Layout() {
   const { cartItems } = useCart();

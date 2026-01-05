@@ -4,7 +4,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import '@/index.css'
 import Layout from '@/Layout';
-import {CartProvider} from "@/context/CartContext.tsx";
+import CartProvider from "@/context/CartProvider.tsx";
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ProductsPage = lazy(() => import('@/pages/ProductsPage'));
